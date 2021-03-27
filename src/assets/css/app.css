@@ -1,0 +1,104 @@
+/*
+App.css of skystorm network
+Coded par Rix56 and it's not the final css
+*/
+
+html{
+	background: #14B6E6 
+}
+
+h1{ 
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 53px;
+	line-height: 50px;
+}
+h2{ 
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 33px;
+    line-height: 50px;
+}
+h3{ 
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-size: 23px;
+	line-height: 50px;
+}
+
+p{
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	text-align: center;
+}
+a{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+button{
+    list-style-type: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
+    border-radius: 50px;
+    color: #04e1c2;
+    text-align: center;
+    padding: 14px 16px;
+    background: black
+}
+button:hover{
+    background: #111;
+    transition-delay: 1s;
+}
+#container{
+    text-align: center;
+}
+input{
+    text-align: center;
+}
+input{
+    list-style-type: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    overflow: hidden;
+    border-radius: 50px;
+    color: #04e1c2;
+    text-align: center;
+    padding: 8px 12px;
+    background: black;
+}
+.success{
+    color: green;
+}
+
+.error{
+    color: red
+}
+
+.info{
+    color: white
+}
+.copyright{
+    color: yellow;
+}
