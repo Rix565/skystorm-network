@@ -6,6 +6,7 @@ require "libs/base.php";
 <html>
 <body>
 	<h1>Skystorm Network - Admin panel</h1>
+	<h2>Home</h2>
 	<?php
 	try {
 	    $q = $db->prepare("SELECT * FROM `users` WHERE `username` = :username");
@@ -21,55 +22,14 @@ require "libs/base.php";
 		header("Location: not_logged.html");
 	}
 	?>
-	<p>Add balance</p>
 	<div id="container">
-		<form method='post'>
-			<input type="text" name="id" placeholder="ID" id="id" required/>
-			<p>Number of skypoints to add :</p>
-			<input type="number" id="balance" name="balance" min="1" max="100" required>
-			<button>send request to db</button>
-		</form>
-		<?php
-		if(isset($_POST['id'])){
-			if(!empty($_POST['id'])){
-				if(isset($_POST['balance'])){
-					if(!empty($_POST['balance'])){
-						$request = $db->prepare("UPDATE `user_data` SET `skypoints`= `skypoints` + :balance WHERE `id`=:id");
-						$request->execute([
-							"id" => $_POST['id'],
-							"balance" => $_POST['balance']
-						]);
-						echo '<p class="success">(maybe) succefully added ' .$_POST['balance']. ' skypoints with id ' .$_POST['id'];
-					}
-				}
-			}
-		}
-		?>
+		<a href="balancemanagement.php"><button>Go to the balance management system</button></a><a href="../"><button>Go to home</button></a>
 	</div>
-	<p>Remove balance</p>
-	<div id="container">
-		<form method='post'>
-			<input type="text" name="id2" placeholder="ID" id="id2" required/>
-			<p>Number of skypoints to remove :</p>
-			<input type="number" id="balance2" name="balance2" min="1" max="100" required>
-			<button>send request to db</button>
-		</form>
-		<?php
-		if(isset($_POST['id2'])){
-			if(!empty($_POST['id2'])){
-				if(isset($_POST['balance2'])){
-					if(!empty($_POST['balance2'])){
-						$request = $db->prepare("UPDATE `user_data` SET `skypoints`= `skypoints` - :balance WHERE `id`=:id");
-						$request->execute([
-							"id" => $_POST['id2'],
-							"balance" => $_POST['balance2']
-						]);
-						echo '<p class="success">(maybe) succefully removed ' .$_POST['balance2']. ' skypoints with id ' .$_POST['id2'];
-					}
-				}
-			}
-		}
-		?>
-	</div>
+	<?php
+	$request = $db->prepare("SELECT COUNT(*) AS nbr FROM `users`");
+	$request->execute();
+	$result = $request->fetch();
+	echo "<p>Currently " .$result['nbr']. " users on Skystorm Network.</p>"
+	?>
 </body>
 </html>
