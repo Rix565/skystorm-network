@@ -47,6 +47,15 @@ CREATE TABLE `user_data` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Structure de la table `skytalk_posts`
+--
+
+CREATE TABLE `skytalk_posts` (
+  `author` varchar(255) COLLATE utf8_bin NOT NULL,
+  `content` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
 -- Index pour les tables déchargées
 --
 
