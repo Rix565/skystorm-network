@@ -26,6 +26,9 @@
 	        	}
 	        	if($result==true){
 	        		if(password_verify($_POST['password'], $result['password'])){
+	        			if($result['class']=="banned"){
+	        				die("<p class=error>You're banned !</p>");
+	        			}
 	        			$_SESSION['nickname'] = $_POST['username'];
 	        			$_SESSION['password'] = $_POST['password'];
 

@@ -31,7 +31,7 @@ require "../libs/connect.php";
 	<p>Clear ALL the posts of SkyTalk</p>
 	<div id="container">
 		<form method="post">
-			<button type="submit" name="formsend" id="formsend">Clear ALL the posts of SkyTalk</button><br/>
+			<button type="submit" name="formsend" id="formsend">Clear ALL the posts of SkyTalk</button><br>
 		</form>
 		<?php
 		if(isset($_POST['formsend'])){
@@ -43,6 +43,48 @@ require "../libs/connect.php";
 	        }
 	        echo "<p class=error>ALL POSTS DELETED.</p>";
 	    }
+		?>
+	</div>
+	<p>___________________________________________________</p>
+	<p>Delete a post</p>
+	<div id="container">
+		<form method="post">
+			<input type="text" name="id" id="id" placeholder="ID" required/>
+			<button type="submit" name="formsend2" id="formsend2">Delete post</button><br>
+		</form>
+		<?php
+		if(isset($_POST['formsend2'])){
+			try{
+				$q = $db->prepare("DELETE FROM `skytalk_posts` WHERE `id` = :id");
+				$q->execute([
+					"id" => $_POST['id']
+				]);
+			} catch(Exception $e){
+				die("Error !" . $e->getMessage());
+			}
+			echo "<p class=success>Post deleted.</p>";
+		}
+		?>
+	</div>
+	<p>___________________________________________________</p>
+	<p>Delete ALL the posts from a user</p>
+	<div id="container">
+		<form method="post">
+			<input type="text" name="author" id="author" placeholder="User" required/>
+			<button type="submit" name="formsend3" id="formsend3">Delete ALL posts</button><br>
+		</form>
+		<?php
+		if(isset($_POST['formsend3'])){
+			try{
+				$q = $db->prepare("DELETE FROM `skytalk_posts` WHERE `author` = :author");
+				$q->execute([
+					"author" => $_POST['author']
+				]);
+			} catch(Exception $e){
+				die("Error !" . $e->getMessage());
+			}
+			echo "<p class=success>ALL posts from user ". $_POST['author']. " have been deleted.</p>";
+		}
 		?>
 	</div>
 </body>
