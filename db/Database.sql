@@ -51,8 +51,9 @@ CREATE TABLE `user_data` (
 --
 
 CREATE TABLE `skytalk_posts` (
-  `author` varchar(255) COLLATE utf8_bin NOT NULL,
-  `content` varchar(255) COLLATE utf8_bin NOT NULL
+  `id` int NOT NULL,
+  `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `content` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -71,6 +72,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_data`
   ADD PRIMARY KEY (`id`);
+  
+--
+-- Index pour la table `skytalk_posts`
+--
+ALTER TABLE `skytalk_posts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -87,6 +94,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_data`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+--
+-- AUTO_INCREMENT pour la table `skytalk_posts`
+--
+ALTER TABLE `skytalk_posts`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
