@@ -1,7 +1,7 @@
 # Skystorm Network
 
 <p align="center">
-  <a href=https://discord.gg/RTDJN5Acw7>Our discord</a>
+  <a href=https://discord.gg/xMVGW9b7rG>Our discord</a>
 </p>
 
 Skystorm Network is an in-developpement network created by Rix56.
