@@ -1,6 +1,6 @@
 <?php
-    require "../libs/connect.php";
     require "libs/base.php";
+    require "../libs/db_fun.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,32 +16,7 @@
 	    </form>
 	    <?php
 	        if(isset($_POST['formsend'])){
-	        	try {
-	        		$q = $db->prepare("SELECT * FROM `users` WHERE `username` = :username");
-	        		$q->bindParam(":username", $_POST['username']);
-	        		$q->execute();
-	        		$result = $q->fetch();
-	        	} catch(Exception $e){
-	        		die("Error ! " . $e->getMessage());	        	
-	        	}
-	        	if($result==true){
-	        		if(password_verify($_POST['password'], $result['password'])){
-	        			if($result['class']=="banned"){
-	        				die("<p class=error>You're banned !</p>");
-	        			}
-	        			$_SESSION['nickname'] = $_POST['username'];
-	        			$_SESSION['password'] = $_POST['password'];
-
-	        			echo "<p class=success>Connected succefully !</p>";
-
-	        			header("Location: ../");
-	        			
-	        		}else{
-	        			echo "<p class=error>Incorrect nickname/password.</p>";
-	        		}
-	        	}else{
-	        		echo "<p class=error>Incorrect nickname/password.</p>";
-	        	}
+	        	DB_Fun::login($_POST['username'], $_POST['password']);
 	        }
 	    ?>
 	</div>

@@ -1,6 +1,6 @@
 <?php
-    require "../libs/connect.php";
     require "libs/base.php";
+    require "../libs/db_fun.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,20 +26,11 @@
 	        			];
 
 	        			$hashpass = password_hash($_POST['password'], PASSWORD_BCRYPT, $options);
-	        			try{
-	        				$q = $db->prepare('INSERT INTO `users`(`username`, `password`, `class`) VALUES (:username, :password, "member")');
-	        				$q->bindParam(":username", $_POST['username']);
-	        				$q->bindParam(":password", $hashpass);
-	        				$q->execute();
-	        				$q = $db->prepare('INSERT INTO `user_data`(`skypoints`) VALUES (0)');
-	        				$q->execute();
-	        				echo "<p class=success>Created account !</p>";
-	        				$_SESSION['nickname'] = $_POST['username'];
-	        				$_SESSION['password'] = $_POST['password'];
-	        				header("Location: ../");
-	        			} catch (PDOException $e) {
-	        				echo "<p class='error'>Username already used !</p>";
-	        			}
+
+	        			DB_Fun::create_account($_POST['username'], $hashpass);
+
+
+
 	        		}else{
 	        			echo "<p class=error>The passwords don't match !</p>";
 	        			exit();
