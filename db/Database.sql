@@ -57,6 +57,16 @@ CREATE TABLE `skytalk_posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Structure de la table `api_key`
+--
+
+CREATE TABLE `api_key` (
+  `api_key` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+COMMIT;
+
+
+--
 -- Index pour les tables déchargées
 --
 
