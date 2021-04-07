@@ -89,6 +89,12 @@ ALTER TABLE `skytalk_posts`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `api_key`
+--
+ALTER TABLE `api_key`
+  ADD UNIQUE KEY `api_key` (`api_key`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
