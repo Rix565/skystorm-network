@@ -41,7 +41,7 @@ require "libs/id_gen.php";
 			$request->execute([
 				"api_key" => $api_key,
 			]);
-			echo '<p class="success">Création de votre clé API terminé ! Clé : ' .$api_key;
+			echo '<p class="success">The creation of your API key is finished ! Key : ' .$api_key;
 	    }
 		?>
 	</div>
