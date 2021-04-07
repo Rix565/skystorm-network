@@ -45,7 +45,7 @@ require "libs/base.php";
 			$result2 = $request->fetch();
 			$request2 = $db->prepare("UPDATE `user_data` SET `skypoints`= `skypoints` + :balance WHERE `id`=:id");
 			$request2->execute([
-				"id" => $result['id'],
+				"id" => $result2['id'],
 				"balance" => $_POST['balance']
 			]);
 			echo '<p class="success">(maybe) succefully added ' .$_POST['balance']. ' skypoints with user ' .$_POST['username'];
