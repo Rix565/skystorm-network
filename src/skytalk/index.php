@@ -7,6 +7,7 @@ require "libs/base.php";
 <body>
 	<h1>Skystorm Network</h1>
 	<h2>SkyTalk</h2>
+	<h3>SkyTalk is a way to talk with other users on Skystorm Network. And every message you post is 1 Skypoint for you !</h3>
 	<?php
 	    require "../libs/connectinfo_folder.php";
         $q = $db->prepare('SELECT * FROM skytalk_posts');
@@ -34,7 +35,17 @@ require "libs/base.php";
                 $post->execute([
                 	"author" => $_SESSION['nickname'],
                 	"content" => $_POST['contentpost']
-                ]);
+				]);
+				$request = $db->prepare("SELECT * FROM `users` WHERE `username` = :username");
+				$request->execute([
+					"username" => $_SESSION['nickname']
+				]);
+				$result2 = $request->fetch();
+				$request2 = $db->prepare("UPDATE `user_data` SET `skypoints`= `skypoints` + :balance WHERE `id`=:id");
+				$request2->execute([
+					"id" => $result2['id'],
+					"balance" => 1
+				]);
                 header('Location: ./');
             }
         }
