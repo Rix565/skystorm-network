@@ -21,11 +21,16 @@ require "libs/base.php";
 	        die("Error ! " . $e->getMessage());	        	
 	    }
         while ($posts = $q->fetch()) {
-        	error_reporting(E_ALL ^ E_NOTICE);
+			error_reporting(E_ALL ^ E_NOTICE);
+			$request3 = $db->prepare("SELECT * FROM `users` WHERE `username` = :username");
+			$request3->execute([
+				"username" => $posts['author']
+			]);
+			$result3 = $request3->fetch();
         	if($result['class']=="admin"){
-        		echo "<p>" .$posts['author']. " posted (id : " .$posts['id']. ") :</p><p>" .$posts['content']. "</p>";
+        		echo "<p><a href='../profile/?id=".$result3['id']."'>" .$posts['author']. "</a> posted (id : " .$posts['id']. ") :</p><p>" .$posts['content']. "</p>";
         	}else{
-        		echo "<p>" .$posts['author']. " posted :</p><p>" .$posts['content']. "</p>";
+        		echo "<p><a href='../profile/?id=".$result3['id']."'>" .$posts['author']. "</a> posted :</p><p>" .$posts['content']. "</p>";
         	}
         }
         if(!empty($_SESSION['nickname']) && !empty($_SESSION['password'])){
