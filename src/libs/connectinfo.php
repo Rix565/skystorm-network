@@ -14,9 +14,9 @@
 	    }
         echo "<p class='info'>Connected as " .$_SESSION['nickname']. " with " .$result2['skypoints']. " skypoints.</p>";
 	    if($result['class']=="admin"){
-	        echo '<div id="container"><a href="./"><button>Go to home</button></a><a href="skytalk/"><button>SkyTalk</button></a><a href="admin/"><button>Go to admin panel</button></a><a href="profile/?id=' .$result['id']. '"><button>Your profile</button></a><a href="./shop"><button>Shop</button></a><a href="account/signout.php"><button>Sign out</button></a></div>';
+	        echo '<div id="container"><a href="./"><button>Go to home</button></a><a href="skytalk/"><button>SkyTalk</button></a><a href="admin/"><button>Go to admin panel</button></a><a href="profile/?id=' .$result['id']. '"><button>Your profile</button></a><a href="./shop"><button>Shop</button></a><a href="developer"><button>Developers</button></a><a href="notifications"><button>Notifications</button></a><a href="account/signout.php"><button>Sign out</button></a></div>';
 	    }else{
-	        echo '<div id="container"><a href="./"><button>Go to home</button><a href="skytalk/"><button>SkyTalk</button></a></a><a href="profile/?id=' .$result['id']. '"><button>Your profile</button></a><a href="./shop"><button>Shop</button></a><a href="account/signout.php"><button>Sign out</button></a></div>';
+	        echo '<div id="container"><a href="./"><button>Go to home</button><a href="skytalk/"><button>SkyTalk</button></a></a><a href="profile/?id=' .$result['id']. '"><button>Your profile</button></a><a href="./shop"><button>Shop</button></a><a href="developer"><button>Developers</button></a><a href="notifications"><button>Notifications</button></a><a href="account/signout.php"><button>Sign out</button></a></div>';
 	    }
     }else{
         echo'<div id="container"><a href="./"><button>Go to home</button></a><a href="skytalk/"><button>SkyTalk</button></a><a href="account/signin.php"><button>Sign in</button></a><a href="account/signup.php"><button>Sign up</button></a></div>';
