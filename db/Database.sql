@@ -57,6 +57,27 @@ CREATE TABLE `skytalk_posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
+-- Structure de la table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `to_user` varchar(255) COLLATE utf8_bin NOT NULL,
+  `content` varchar(255) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Structure de la table `api_request`
+--
+
+CREATE TABLE `api_request` (
+  `author` varchar(255) COLLATE utf8_bin NOT NULL,
+  `requestcontent` varchar(255) COLLATE utf8_bin NOT NULL,
+  `accepted` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL DEFAULT 'no',
+  `id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+
+--
 -- Structure de la table `api_key`
 --
 
@@ -92,7 +113,13 @@ ALTER TABLE `skytalk_posts`
 -- Index pour la table `api_key`
 --
 ALTER TABLE `api_key`
-  ADD UNIQUE KEY `api_key` (`api_key`);
+  ADD UNIQUE KEY `api_key` (`api_key`)
+  
+--
+-- Index pour la table `api_request`
+--
+ALTER TABLE `api_request`
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -109,13 +136,18 @@ ALTER TABLE `users`
 --
 ALTER TABLE `user_data`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
-COMMIT;
 
 --
 -- AUTO_INCREMENT pour la table `skytalk_posts`
 --
 ALTER TABLE `skytalk_posts`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `api_request`
+--
+ALTER TABLE `api_request`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
