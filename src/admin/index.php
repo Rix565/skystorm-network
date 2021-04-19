@@ -23,7 +23,7 @@ require "libs/base.php";
 	}
 	?>
 	<div id="container">
-		<a href="balancemanagement.php"><button>Go to the balance management system</button></a><a href="skytalkmanagement.php"><button>Go to the SkyTalk Management</button></a><a href="usermanagement.php"><button>Go to the User Management</button></a><a href="apimanagement.php"><button>Go to API management</button></a><a href="../"><button>Go to home</button></a>
+		<a href="balancemanagement.php"><button>Go to the balance management system</button></a><a href="skytalkmanagement.php"><button>Go to the SkyTalk Management</button></a><a href="usermanagement.php"><button>Go to the User Management</button></a><a href="apimanagement.php"><button>Go to API management</button></a><a href="apirequest.php"><button>Go to API Requests</button></a><a href="../"><button>Go to home</button></a>
 	</div>
 	<?php
 	$request = $db->prepare("SELECT COUNT(*) AS nbr FROM `users`");
